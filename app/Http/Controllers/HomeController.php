@@ -39,7 +39,7 @@ class HomeController extends Controller
     public function login(Request $request){
         $people_email = $request->people_email;
         $people_password = md5($request->people_password);
-        $valid_people = DB::table('tbl_people')->where('people_email',$people_email)->where('people_password',$people_password)->first();
+        $valid_people = DB::table('tbl_people')->where('people_email',$people_email)->where('people_password',$people_password)->get();
 
         if($valid_people){
             Session::put('people_id',$valid_people->people_id);
