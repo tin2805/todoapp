@@ -27,7 +27,7 @@
 									<li class="pull-left notification-sender">Bạn đã hoàn thành 5 công việc trong tuần này</li>
 								</ul>
 								<p>
-									Nhấp để xem
+									Nhấp để xem.
 								</p>
 							</div>
 						</div>
