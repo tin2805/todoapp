@@ -35,7 +35,7 @@
 							<span class="alert-icon"><i class="fa fa-bell-o"></i></span>
 							<div class="notification-info">
 								<ul class="clearfix notification-meta">
-									<li class="pull-left notification-sender">Tuần này vẫn còn 5 công việc chưa làm</li>
+									<li class="pull-left notification-sender">Tuần này vẫn còn 5 công việc chưa làm nhé</li>
 								</ul>
 								<p>
 									Nhấp để xem
