@@ -355,6 +355,12 @@ class HomeController extends Controller
     //calendar
     public function calendar(){
         $data = session::get('data');
+        if($data){
+            $data = $data;
+        }
+        else{
+            $data = 0;
+        }
         return view('pages.calendar')->with('jobs', $data);
     }
 }

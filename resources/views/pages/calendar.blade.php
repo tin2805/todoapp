@@ -31,6 +31,22 @@
 		<!-- calendar -->
 	<script type="text/javascript" src="{{asset('public/frontend/js/monthly.js')}}"></script>
 	<script type="text/javascript">
+	@if($jobs == 0)
+		var Events = {
+			"monthly": [
+				{
+				"id": 1,
+				"name": "",
+				"startdate": "",
+				"enddate": "",
+				"starttime": "",
+				"endtime": "",
+				"color": "#99CCCC",
+				"url": ""
+				},
+			]
+		};
+	@else
 		var Events = {
 			"monthly": [
 				@foreach ($jobs as $job) 
@@ -47,6 +63,7 @@
 				@endforeach
 			]
 			};
+	@endif
 
 
 		$(window).load( function() {
