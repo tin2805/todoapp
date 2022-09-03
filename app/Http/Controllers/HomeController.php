@@ -191,7 +191,7 @@ class HomeController extends Controller
         }
         else{
             $red = 0;
-            $greend = 0;
+            $green = 0;
             $yellow = 0;
         }
 
