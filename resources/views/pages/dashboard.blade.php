@@ -13,7 +13,7 @@
 							<span class="alert-icon"><i class="fa fa-facebook"></i></span>
 							<div class="notification-info">
 								<ul class="clearfix notification-meta">
-									<li class="pull-left notification-sender"><span><a href="#">Hôm nay có {{$red}} deadline</a></span>, vui lòng làm </li>
+									<li class="pull-left notification-sender"><span><a href="#">Hôm nay có {{count($red)}} deadline</a></span>, vui lòng làm </li>
 								</ul>
 								<p>
 									Nhấp để xem

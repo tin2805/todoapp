@@ -168,8 +168,16 @@ class HomeController extends Controller
     }
     public function dashboard(){
         $this->Authlogin();
+        $data = Session::get('data');
+        //red
+        // $red = count(DB::table('tbl_jobs')->where('job_status',1)->where('job_deadline', date('Y-m-d'))->get());
+        for($i=0;$i<count($data);$i++){
+            if($data[$i]['job_status'] == 1 && $data[$i]['job_deadline'] == date('Y-m-d')){
+                $red[] = $data[$i];
+            }
+        }
         // $green = DB::table('tbl_jobs')->where('job_status',0)->get();
-        return view('pages.dashboard');
+        return view('pages.dashboard')->with(compact('red'));
     }
     public function show_login(){
         return view('pages.login');
@@ -214,21 +222,34 @@ class HomeController extends Controller
     }
     //today-job
     public function today_complete(){
-        $complete_status = DB::table('tbl_jobs')->where('job_status','0')->get();
+        // $complete_status = DB::table('tbl_jobs')->where('job_status','0')->get();
+        $data = Session::get('data');
+        if($data){
+            for($i=0;$i<count($data);$i++){
+                if($data[$i]['job_status'] == 0){
+                    $complete_status[] = $data[$i];
+                }
+            }
+        }
+        else{
+            $complete_status = 0;
+        }
         return view('pages.show_job')->with('all_jobs',$complete_status);
     }
     public function today_uncomplete(){
-        $uncomplete_status = DB::table('tbl_jobs')->where('job_status','1')->get();
-        // foreach($uncomplete_status as $value){
-        //     if(date('Y-m-d') < $value->job_deadline){
-        //         $job = DB::table('tbl_jobs')->where('job_id',$value->job_id)->get();
-        //         return view('pages.show_job')->with('all_jobs',$job);
-        //     }
-        //     else{
-        //         return view('pages.show_job')->with('all_jobs','');
-        //     }
-        // }
-        return($uncomplete_status);
+        $data = Session::get('data');
+
+        if($data){
+            for($i=0;$i<count($data);$i++){
+                return $data[$i];
+                if($data[$i]['job_status'] == 1){
+                    $uncomplete_status[] = $data[$i];
+                }
+            }
+        }
+        else{
+            $uncomplete_status = 0;
+        }
         return view('pages.show_job')->with('all_jobs',$uncomplete_status);
 
     }
@@ -244,24 +265,10 @@ class HomeController extends Controller
         $data['job_deadline'] = $request->job_deadline;
         $data['job_status'] = $request->job_status;
         Session::push('data',$data);
-
-        // $data['job_title'] = $request->job_title;
-        // $data['job_desc'] = $request->job_desc;
-        // $data['job_deadline'] = $request->job_deadline;
-        // $data['job_status'] = $request->job_status;
-        // Session::put('job_title', $request->job_title);
-        // Session::put('job_desc', $request->job_desc);
-        // Session::put('job_deadline', $request->job_deadline);
-        // Session::put('job_status', $request->job_status);
         return Redirect('/add-job');
     }
     public function show_job(){
         $this->Authlogin();
-        // $all_jobs['job_title'] = Session::get('job_title');
-        // $all_jobs['job_desc'] = Session::get('job_desc');
-        // $all_jobs['job_deadline'] = Session::get('job_deadline');
-        // $all_jobs['job_status'] = Session::get('job_status');
-        // $all_jobs = DB::table('tbl_jobs')->get();
         $all_jobs = Session::get('data');
         if($all_jobs){
             return view('pages.show_job')->with('all_jobs', $all_jobs);    
@@ -270,7 +277,6 @@ class HomeController extends Controller
             $all_jobs = 0;
             return view('pages.show_job')->with('all_jobs', $all_jobs);
         }
-        // return $all_jobs[1]['job_title'];
 
     }
 
