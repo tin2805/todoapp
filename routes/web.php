@@ -33,14 +33,14 @@ Route::post('/save-job','HomeController@save_job');
 Route::get('/show-job','HomeController@show_job');
 
 //update-status
-Route::get('/update-status/{job_id}','HomeController@update_status');
+Route::get('/update-status/{job_title}','HomeController@update_status');
 
 //edit-job
-Route::get('/edit-job/{job_id}','HomeController@edit_job');
+Route::get('/edit-job/{job_title}','HomeController@edit_job');
 Route::post('/update-job/{job_id}','HomeController@update_job');
 
 //delete-job
-Route::get('/delete-job/{job_id}','HomeController@delete_job');
+Route::get('/delete-job/{job_title}','HomeController@delete_job');
 
 //calendal
 Route::get('/calendar','HomeController@calendar');
