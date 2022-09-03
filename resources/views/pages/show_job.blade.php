@@ -49,37 +49,49 @@
           </tr>
         </thead>
         <tbody>
-        @foreach($all_jobs as $key => $product)
+        @if ($all_jobs == 0)
           <tr>
-            <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
-            <td>{{$product['job_title']}}</td>
-            <td>{{$product['job_deadline']}}</td>
-            <td>
-              <span class="text-ellipsis">
-              <?php
-                  if($product['job_status'] == 1){
-                    ?>
-                       <a href="{{URL::to('/update-status/'.$product['job_title'])}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
-                    <?php
-                  }
-                  else{
-                    ?>
-                       <a href="{{URL::to('/update-status/'.$product['job_title'])}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
-                    <?php
-                  }
-                ?>
-              </span>
-            </td>
-            <td>
-              <a href="{{URL::to('/edit-job/'.$product['job_title'])}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-pencil-square-o text-success text-active"></i>
-              </a>
-              <a onclick="return confirm('Are you sure to delete?')" href="{{URL::to('/delete-job/'.$product['job_title'])}}" class="active styling-edit" ui-toggle-class="">
-                <i class="fa fa-times text-danger text"></i>
-              </a>
-            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
+        
+        @else
+          @foreach($all_jobs as $key => $product)
+            <tr>
+              <td><label class="i-checks m-b-none"><input type="checkbox" name="post[]"><i></i></label></td>
+              <td>{{$product['job_title']}}</td>
+              <td>{{$product['job_deadline']}}</td>
+              <td>
+                <span class="text-ellipsis">
+                <?php
+                    if($product['job_status'] == 1){
+                      ?>
+                        <a href="{{URL::to('/update-status/'.$product['job_title'])}}"><span class="fa-thumb-styling fa fa-thumbs-down"></span></a>
+                      <?php
+                    }
+                    else{
+                      ?>
+                        <a href="{{URL::to('/update-status/'.$product['job_title'])}}"><span class="fa-thumb-styling fa fa-thumbs-up"></span></a>
+                      <?php
+                    }
+                  ?>
+                </span>
+              </td>
+              <td>
+                <a href="{{URL::to('/edit-job/'.$product['job_title'])}}" class="active styling-edit" ui-toggle-class="">
+                  <i class="fa fa-pencil-square-o text-success text-active"></i>
+                </a>
+                <a onclick="return confirm('Are you sure to delete?')" href="{{URL::to('/delete-job/'.$product['job_title'])}}" class="active styling-edit" ui-toggle-class="">
+                  <i class="fa fa-times text-danger text"></i>
+                </a>
+              </td>
+            </tr>
           @endforeach
+        
+        @endif
         </tbody>
       </table>
     </div>

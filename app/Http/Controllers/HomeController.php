@@ -257,15 +257,21 @@ class HomeController extends Controller
     }
     public function show_job(){
         $this->Authlogin();
-        $all_jobs = [];
         // $all_jobs['job_title'] = Session::get('job_title');
         // $all_jobs['job_desc'] = Session::get('job_desc');
         // $all_jobs['job_deadline'] = Session::get('job_deadline');
         // $all_jobs['job_status'] = Session::get('job_status');
         // $all_jobs = DB::table('tbl_jobs')->get();
         $all_jobs = Session::get('data');
+        if($all_jobs){
+            return view('pages.show_job')->with('all_jobs', $all_jobs);    
+        }
+        else{
+            $all_jobs = 0;
+            return view('pages.show_job')->with('all_jobs', $all_jobs);
+        }
         // return $all_jobs[1]['job_title'];
-        return view('pages.show_job')->with('all_jobs', $all_jobs);
+
     }
 
     //update-status
