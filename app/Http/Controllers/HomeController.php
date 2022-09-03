@@ -190,9 +190,9 @@ class HomeController extends Controller
             }
         }
         else{
-            $red = 0;
-            $green = 0;
-            $yellow = 0;
+            $red = [];
+            $green = [];
+            $yellow = [];
         }
 
         return view('pages.dashboard')->with(compact('red','green','yellow'));
