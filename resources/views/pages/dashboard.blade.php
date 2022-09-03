@@ -24,7 +24,7 @@
 							<span class="alert-icon"><i class="fa fa-comments-o"></i></span>
 							<div class="notification-info">
 								<ul class="clearfix notification-meta">
-									<li class="pull-left notification-sender">Bạn đã hoàn thành 5 công việc trong tuần này</li>
+									<li class="pull-left notification-sender">Bạn đã hoàn thành {{count($green)}} công việc trong tuần này</li>
 								</ul>
 								<p>
 									Nhấp để xem.
@@ -35,7 +35,7 @@
 							<span class="alert-icon"><i class="fa fa-bell-o"></i></span>
 							<div class="notification-info">
 								<ul class="clearfix notification-meta">
-									<li class="pull-left notification-sender">Tuần này vẫn còn 5 công việc chưa làm nhé</li>
+									<li class="pull-left notification-sender">Tuần này vẫn còn {{count($yellow)}} công việc chưa làm nhé</li>
 								</ul>
 								<p>
 									Nhấp để xem

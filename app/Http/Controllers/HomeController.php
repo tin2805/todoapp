@@ -169,15 +169,33 @@ class HomeController extends Controller
     public function dashboard(){
         $this->Authlogin();
         $data = Session::get('data');
-        //red
-        // $red = count(DB::table('tbl_jobs')->where('job_status',1)->where('job_deadline', date('Y-m-d'))->get());
-        for($i=0;$i<count($data);$i++){
-            if($data[$i]['job_status'] == 1 && $data[$i]['job_deadline'] == date('Y-m-d')){
-                $red[] = $data[$i];
+        if($data){
+            //red
+            for($i=0;$i<count($data);$i++){
+                if($data[$i]['job_status'] == 1 && $data[$i]['job_deadline'] == date('Y-m-d')){
+                    $red[] = $data[$i];
+                }
+            }
+            //green
+            for($i=0;$i<count($data);$i++){
+                if($data[$i]['job_status'] == 0){
+                    $green[] = $data[$i];
+                }
+            }
+            //yellow
+            for($i=0;$i<count($data);$i++){
+                if($data[$i]['job_status'] == 1){
+                    $yellow[] = $data[$i];
+                }
             }
         }
-        // $green = DB::table('tbl_jobs')->where('job_status',0)->get();
-        return view('pages.dashboard')->with(compact('red'));
+        else{
+            $red = 0;
+            $greend = 0;
+            $yellow = 0;
+        }
+
+        return view('pages.dashboard')->with(compact('red','green','yellow'));
     }
     public function show_login(){
         return view('pages.login');
