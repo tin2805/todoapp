@@ -257,7 +257,7 @@ class HomeController extends Controller
     }
     public function show_job(){
         $this->Authlogin();
-        // $all_jobs = [];
+        $all_jobs = [];
         // $all_jobs['job_title'] = Session::get('job_title');
         // $all_jobs['job_desc'] = Session::get('job_desc');
         // $all_jobs['job_deadline'] = Session::get('job_deadline');
@@ -348,8 +348,7 @@ class HomeController extends Controller
 
     //calendar
     public function calendar(){
-        $jobs = DB::table('tbl_jobs')->get();
-
-        return view('pages.calendar')->with('jobs', $jobs);
+        $data = session::get('data');
+        return view('pages.calendar')->with('jobs', $data);
     }
 }

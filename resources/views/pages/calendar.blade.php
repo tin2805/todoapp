@@ -36,8 +36,8 @@
 				@foreach ($jobs as $job) 
 				{
 				"id": 1,
-				"name": "{{$job->job_title}}",
-				"startdate": "{{$job->job_deadline}}",
+				"name": "{{$job['job_title']}}",
+				"startdate": "{{$job['job_deadline']}}",
 				"enddate": "",
 				"starttime": "",
 				"endtime": "",
